@@ -28,6 +28,10 @@ public class Category {
         this.createdAt = createdAt;
     }
 
+    public Category(@Length(max = 30) String name) {
+        this.name = name;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -1,21 +1,20 @@
 package com.example.demoretrofit.models.responses;
 
-public class CustomResponse<T> {
+public class CustomResponse<T> extends ResponseBase{
 
 //    @SerializedName("data")
     private T data;
 
-    private String message;
-
-    private Boolean status;
-
     public CustomResponse() {
     }
 
-    public CustomResponse(T data, String message, Boolean status) {
+    public CustomResponse(T data) {
         this.data = data;
-        this.message = message;
-        this.status = status;
+    }
+
+    public CustomResponse(String message, Boolean status, T data) {
+        super(message, status);
+        this.data = data;
     }
 
     public T getData() {
@@ -26,28 +25,10 @@ public class CustomResponse<T> {
         this.data = data;
     }
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
     @Override
     public String toString() {
         return "CustomResponse{" +
                 "data=" + data +
-                ", message='" + message + '\'' +
-                ", status=" + status +
                 '}';
     }
 }

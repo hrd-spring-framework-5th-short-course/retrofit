@@ -1,5 +1,7 @@
 package com.example.demoretrofit;
 
+import com.example.demoretrofit.models.Category;
+import com.example.demoretrofit.models.responses.SaveCategoryResponse;
 import com.example.demoretrofit.repositories.BookRepository;
 import com.example.demoretrofit.services.AuthorServiceImpl;
 import com.example.demoretrofit.services.BookServiceImpl;
@@ -47,6 +49,19 @@ public class DemoRetrofitApplication implements ApplicationRunner {
                 .forEach(System.out::println);
 
         System.out.println(this.categoryService.getOneCategory(1).body().getData());
+
+
+        System.out.println(this.categoryService.getCateByName("string").body());
+
+
+        Category category = new Category("From Retrofit");
+
+        SaveCategoryResponse response = this.categoryService.saveCategory(category).body();
+
+        System.out.println(response);
+
+
+        System.out.println(this.categoryService.deleteCategory(16).body());
 
     }
 }
