@@ -11,7 +11,10 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
+@EnableScheduling
 @SpringBootApplication
 public class DemoRetrofitApplication implements ApplicationRunner {
 
@@ -64,5 +67,27 @@ public class DemoRetrofitApplication implements ApplicationRunner {
         System.out.println(this.categoryService.deleteCategory(16).body());
 
     }
+
+
+    @Scheduled(fixedRate = 10000, initialDelay = 10000)
+    public void testScheduling() {
+        System.out.println("testing scheduling");
+    }
+
+
+    @Scheduled(fixedDelay = 10000, initialDelay = 10000)
+    public void testScheduling2() {
+        System.out.println("testing scheduling");
+    }
+
+
+    @Scheduled(cron = "0 45 9 * * *")
+    public void testScheduling3() {
+        System.out.println("This method will be executed at 9:45:00 am everyday!");
+    }
+
+
+
+
 }
 

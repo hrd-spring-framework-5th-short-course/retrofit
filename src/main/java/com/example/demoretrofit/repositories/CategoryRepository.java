@@ -20,7 +20,6 @@ public interface CategoryRepository {
     @POST("/api/v1/categories")
     Call<SaveCategoryResponse> saveCategory(@Body Category category);
 
-
     @DELETE("/api/v1/categories/{id}")
     Call<ResponseBase> deleteCategory(@Path("id") Integer id);
 
